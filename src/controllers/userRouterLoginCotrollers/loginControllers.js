@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
-import { conectarABaseDeDatos } from "../config.js";
-import { validateResponse } from "../services/DB/dataBase.js";
-import { response } from "../utilities/response.js";
-import { generaToken } from "../auth/index.js";
+import { conectarABaseDeDatos } from "../../config.js";
+import { validateResponse } from "../../services/DB/dataBase.js";
+import { response } from "../../utilities/response.js";
+import { generaToken } from "../../auth/index.js";
 
 export const singUp = async (req, res) => {
   const {
@@ -19,6 +19,7 @@ export const singUp = async (req, res) => {
     image,
   } = req.body;
   const encryp = await bcrypt.hash(userPassword, 5);
+  console.log(encryp);
   const pool = await conectarABaseDeDatos();
   const { rows } = await pool.query(
     "CALL sp_singup_user(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @res)",

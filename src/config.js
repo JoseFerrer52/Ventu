@@ -13,11 +13,11 @@ app: {
 async function conectarABaseDeDatos() {
     try {
         const pool = createPool({
-            host: process.env.HOST,
-            user: process.env.USER,
-            password: process.env.PASSWORD,
-            port: process.env.PORT,
-            database: process.env.DATABASE
+            host: process.env.HOST || 'localhost',
+            user: process.env.USER || 'root',
+            password: process.env.PASSWORD || 'Kjkszpj.png8080',
+            port: process.env.PORT || 3306,
+            database: process.env.DATABASE || 'ventu'
         });
 
         console.log('Conexión exitosa a la base de datos.');
